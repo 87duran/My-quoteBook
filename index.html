@@ -1,0 +1,41 @@
+<html ng-app='quoteBook'>
+<head >
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title></title>
+</head>
+<body ng-controller='mainCtrl'>
+
+	<div>
+		<!--This is for the add quote area-->
+		<button ng-click='toggleSearch()'>Add Quote</button>
+		<br/>
+		<input ng-model='quote.text' ng-show='showSearch' placeholder='quote'>
+		<input ng-model='quote.author' ng-show='showSearch' placeholder='author'>
+		<button ng-show='showSearch' ng-click='addQuote()'>Submit Quote</button>
+	</div>
+	<div>
+		<!-- This is for the remove quote area-->
+		<br/>
+		<button ng-click='toggleSearch2()'>Remove Quote</button>
+		<br/>
+			<input ng-show='showSearch2' ng-model='quote.text' placeholder='Enter quote to remove'>
+			<button ng-show='showSearch2' ng-click='removeQuote()'>Submit</button>
+	</div>
+	<br/>
+	<div ng-repeat='quote in quotes'>
+		{{quote.text}}
+		{{quote.author}}
+
+
+	</div>
+
+
+
+
+<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js'></script>
+<script type="text/javascript" src='js/app.js'></script>
+<script type="text/javascript" src='js/dataService.js'></script>
+<script type="text/javascript" src='js/mainCtrl.js'></script>
+
+</body>
+</html>
