@@ -3,30 +3,31 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title></title>
 </head>
+<div class='header'>My Favorite Quotes</div>
 <body ng-controller='mainCtrl'>
 
-	<div>
+	<div class='buttonRow'>
 		<!--This is for the add quote area-->
 		<button ng-click='toggleSearch()'>Add Quote</button>
-		<br/>
+		<button ng-click='toggleSearch2()'>Remove Quote</button>
+		<button ng-click='toggleSearch3()'>Filter</button>
+	</div>
+	<div class='myInputs'>
 		<input ng-model='quote.text' ng-show='showSearch' placeholder='quote'>
 		<input ng-model='quote.author' ng-show='showSearch' placeholder='author'>
 		<button ng-show='showSearch' ng-click='addQuote()'>Submit Quote</button>
 	</div>
-	<div>
-		<!-- This is for the remove quote area-->
-		<br/>
-		<button ng-click='toggleSearch2()'>Remove Quote</button>
-		<br/>
-			<input ng-show='showSearch2' ng-model='quote.text' placeholder='Enter quote to remove'>
-			<button ng-show='showSearch2' ng-click='removeQuote()'>Submit</button>
+	<div class='myInputs'>
+		<input ng-show='showSearch2' ng-model='removeQuote.text' placeholder='Quote'>
+		<button ng-show='showSearch2' ng-click='removeQuote()'>Submit</button>
 	</div>
-	<br/>
-	<div ng-repeat='quote in quotes'>
-		{{quote.text}}
-		{{quote.author}}
+	<div class='myInputs'>
+		<input ng-model='search' ng-show='showSearch3' placeholder='Filter' >
+	</div>
 
-
+	<div ng-repeat='quote in quotes | filter:search'>
+		<div class='quoteText'>{{quote.text}}</div>
+		<div class='quoteAuthor'>- {{quote.author}}</div>
 	</div>
 
 
